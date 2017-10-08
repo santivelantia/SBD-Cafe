@@ -130,6 +130,7 @@ void Member (){
                             cout << "Input yang dimasukan salah, silahkan input kembali" << endl;
                         }
                      } while ( M[i].kerja != "1" || "2" || "3" || "4");
+                     pesan ();
                 }
                 else i++;
             }
