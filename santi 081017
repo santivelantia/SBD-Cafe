@@ -141,6 +141,7 @@ void Member (){
             cin >> namanonmember;
             cout << "Masukkan pekerjaan Anda : ";
             cin >> kerjanonmember;
+            pesan();
         }
 
     }
