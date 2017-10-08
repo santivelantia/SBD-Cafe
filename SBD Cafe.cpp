@@ -3,7 +3,7 @@ using namespace std;
 
 int pilihan,i,j;
 char verifikasimember, keinginan;
-string IDpelanggan, PWDpelanggan, namanonmember, kerjanonmember;
+string IDpelanggan, PWDpelanggan, namanonmember, kerjanonmember, ID;
 bool cek = false;
 
 struct Member {
@@ -37,34 +37,42 @@ M[13].nama="Aryadilla Rivaldi P.";  M[13].id="aruyea";      M[13].pass="ary034";
 
 }
 
-void Member ()
-{
+void Pesan () {
+}
+void Member (){
     cout << "Apakah Anda member?(Y/N)";
     cin >> verifikasimember;
     if (verifikasimember == 'y' || verifikasimember == 'Y')
     {
         do{
-        cout << "Masukkan ID Anda : ";
-        cin >> IDpelanggan;
-        i=0;
-        while (i<100||cek == false)
-        {
-            if (IDpelanggan == M[i].id)
+            cout << "Masukkan ID Anda : ";
+            cin >> IDpelanggan;
+            i=0;
+            while ((i<100)&&(cek == false))
             {
+                if (IDpelanggan == M[i].id)
+                {
                 cek = true;
+                }
+                else i++;
             }
-            else i++;
-        }
-        if (cek == false) cout << "ID yang dimasukkan salah";
+            if (cek == false) cout << "ID yang dimasukkan salah";
         }while (cek == false);
-        cout << "Masukkan password Anda : ";
-        cin >> PWDpelanggan;
-        if (M[i].pass == PWDpelanggan)
-        {
-            cout << "Menu_Minuman()";
-        }
+
+        cek = false;
+
+        do {
+            cout << "Masukkan password Anda : ";
+            cin >> PWDpelanggan;
+            if (M[i].pass == PWDpelanggan)
+            {
+                Pesan(); cek = true;
+            }
+            else {cout << "Password tidak tepat" << endl;}
+        } while ( cek == false );
     }
-    if (verifikasimember == 'n' || verifikasimember == 'N')
+
+    else if (verifikasimember == 'n' || verifikasimember == 'N')
     {
         cout << "Apakah ingin menjadi member?(Y/N)";
         cin >> keinginan;
@@ -78,7 +86,7 @@ void Member ()
                     cin >> M[i].nama;
                     cout << "Masukkan ID yang Anda inginkan : ";
                     cin >> M[i].id;
-                    /*do
+                    do
                     {
                         cout << "Masukkan ID yang Anda inginkan : ";
                         cin >> ID;
@@ -95,27 +103,33 @@ void Member ()
                         }
                     } while (cek==true);
                     M[i].id=ID;
-                    */
+
+
                     do {
-                    cout << "Masukkan password Anda : ";
-                    cin >> M[i].password1;
-                    cout << "Masukkan kembali password Anda : ";
-                    cin >> M[i].password2;
+                        cout << "Masukkan password Anda : ";
+                        cin >> M[i].password1;
+                        cout << "Masukkan kembali password Anda : ";
+                        cin >> M[i].password2;
 
-                    if (M[i].password1 != M[i].password2)
-                    {
-                        cout << "Password Anda tidak cocok." <<endl;
-                    }
-                    }while (M[i].password1 != M[i].password2);
+                        if (M[i].password1 != M[i].password2)
+                        {
+                            cout << "Password Anda tidak cocok." <<endl;
+                        }
+                    } while (M[i].password1 != M[i].password2);
 
-                    cout << "Masukkan jenis pekerjaan Anda : ";
-                    cin >> M[i].kerja;
+                    do{
+                         cout << "Masukkan jenis pekerjaan Anda : 1. pelajar 2. mahasiswa 3. pegawai 4. lainnya";
+                         cin >> M[i].kerja;
 
-                    if ( M[i].kerja == "Pelajar" || "Mahasiswa")
-                    {
-                        cout << "Masukkan nomor kartu pelajar/mahasiswa Anda : ";
-                        cin >> M[i].nokartu;
-                    }
+                        if ( M[i].kerja == "1" || "2")
+                        {
+                            cout << "Masukkan nomor kartu pelajar/mahasiswa Anda : ";
+                            cin >> M[i].nokartu;
+                        }
+                        else if ( M[i].kerja != "1" || "2" || "3" || "4") {
+                            cout << "Input yang dimasukan salah, silahkan input kembali" << endl;
+                        }
+                     } while ( M[i].kerja != "1" || "2" || "3" || "4");
                 }
                 else i++;
             }
@@ -142,21 +156,19 @@ MM[5].nama = "Cappuccino Latte";        MM[5].kategori = 2; MM[5].harga = 20.000
 MM[6].nama = "Choco Hazelnut Latte";    MM[6].kategori = 2; MM[6].harga = 22.000;
 }
 
-void Manajemen ()
-{
+void Manajemen (){
     cout << "mti";
 }
 
-int main ()
-{
+int main (){
     EntryMember();
     EntryMenu();
-    cout << "Selamat datang di SBD Cafe." << endl;
-    cout << "Pilih menu berikut : " << endl;
-    cout << "1. Menu Pelanggan" << endl;
-    cout << "2. Menu Manajemen" << endl;
-    cout << "3. Keluar" << endl;
     do {
+        cout << "Selamat datang di SBD Cafe." << endl;
+        cout << "Pilih menu berikut : " << endl;
+        cout << "1. Menu Pelanggan" << endl;
+        cout << "2. Menu Manajemen" << endl;
+        cout << "3. Keluar" << endl;
         cout << "Masukkan piliihan Anda : ";
         cin >> pilihan;
         if (pilihan == 1){
